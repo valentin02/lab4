@@ -1,6 +1,7 @@
 package ua.politeh;
 
 import lombok.SneakyThrows;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -54,7 +55,7 @@ public class FuncUtils {
         }
         System.out.println("Enter number from the list");
         int _i = ((int) checkNum() - 1);
-        if (_i >= 0 && _i < temp.length )
+        if (_i >= 0 && _i < temp.length)
             return temp[_i];
         else
             return null;
@@ -73,7 +74,7 @@ public class FuncUtils {
         db.addTriangle(6, 7, 15);
     }
 
-   static void menu2S(Database db)  {
+    static void menu2S(Database db) {
         while (true) {
             String s1 = "Hello, " +
                     "enter number from the list\n" +
@@ -199,7 +200,7 @@ public class FuncUtils {
 
             switch ((int) checkNum()) {
                 case 1:
-                   db.jacksonDeserialize("db.json");
+                    db.jacksonDeserialize("db.json");
                     System.out.println(db.toString());
                     break;
                 case 2:

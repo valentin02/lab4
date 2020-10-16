@@ -1,13 +1,14 @@
 package ua.politeh;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Triangle implements  Serializable, IFigure {
+public class Triangle implements Serializable, IFigure {
     /**
      * sides array
      */
     //@Getter
-    private  double[] sides;
+    private double[] sides;
 
     public Triangle() {
 

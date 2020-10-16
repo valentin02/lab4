@@ -6,7 +6,10 @@ package ua.politeh;
  */
 public interface IFigure {
     boolean isExists();
+
     double getArea();
+
     double getPerimeter();
+
     double[] getAngle();
 }

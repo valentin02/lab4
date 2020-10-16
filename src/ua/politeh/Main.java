@@ -1,6 +1,7 @@
 package ua.politeh;
 
 import lombok.SneakyThrows;
+
 import java.io.IOException;
 
 public class Main {

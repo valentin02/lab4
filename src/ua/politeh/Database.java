@@ -1,6 +1,8 @@
 package ua.politeh;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -9,9 +11,9 @@ public class Database {
     public final String PATHS = "./src/ua/politeh/filesS/";
     public final String PATHJ = "./src/ua/politeh/filesJ/";
 
-    public ArrayList<Triangle> triangles ;
+    public ArrayList<Triangle> triangles;
 
-    public Database(){
+    public Database() {
         triangles = new ArrayList<>();
     }
 
@@ -37,7 +39,7 @@ public class Database {
 
     public void serialize(String filename) {
         try {
-            FileOutputStream fileOut = new FileOutputStream(PATHS+filename);
+            FileOutputStream fileOut = new FileOutputStream(PATHS + filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this.triangles);
             out.close();
@@ -48,9 +50,9 @@ public class Database {
     }
 
     public void deserialize(String filename) {
-        filename = filename.equals(null) ? "db.txt" : filename;
+        filename = (filename == null) ? "db.txt" : filename;
         try {
-            FileInputStream fileIn = new FileInputStream(PATHS+filename);
+            FileInputStream fileIn = new FileInputStream(PATHS + filename);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             this.triangles = (ArrayList<Triangle>) in.readObject();
             in.close();
@@ -65,14 +67,14 @@ public class Database {
 
     public void jacksonSerialize(String filename) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File(PATHJ+filename), this);
+        objectMapper.writeValue(new File(PATHJ + filename), this);
     }
 
     public void jacksonDeserialize(String filename) throws IOException {
-        filename = filename.equals(null) ? "db.json" : filename;
+        filename = (filename == null) ? "db.json" : filename;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        Database db1 = objectMapper.readValue(new File(PATHJ+filename), Database.class);
+        Database db1 = objectMapper.readValue(new File(PATHJ + filename), Database.class);
         this.triangles = db1.triangles;
     }
 
@@ -97,6 +99,7 @@ public class Database {
         String n = "db" + (l.length) + ".txt";
         return n;
     }
+
     public String nameFileJ() {
         String[] l = this.listFilesUsingJavaIO(PATHJ);
         String n = "db" + (l.length) + ".json";
