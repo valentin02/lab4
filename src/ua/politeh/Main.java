@@ -1,30 +1,29 @@
 package ua.politeh;
 
-
-
+import lombok.SneakyThrows;
 import java.io.IOException;
 
 public class Main {
 
+    @SneakyThrows
     public static void main(String[] args) throws IOException {
-
-    Database db = new Database();
-    //FuncUtils.menu(db);
-    //db.copyFileUsingChannel(new File(db.PATH + "db.txt"));
-        db.addTriangle(2, 3, 4.5);
-        db.addTriangle(2, 3, 4.5);
-       db.addTriangle(2, 3, 4.5);
-        db.addTriangle(2, 3, 4.5);
-        db.jacksonSerialize("j.json");
-        System.out.println(db.toString());
-//    db.serialize(db.PATH+"db.txt");
-     //   db.deserialize(db.PATH+"db.txt");
-     // db.jacksonDeserialize("./src/ua/politeh/files/db_jackson1.json");
-      //  System.out.println(db.toString());
-      //  db.serializeFastJSON(db.PATH+"db.json");
-       // db.deserialize(db.PATH+"db.json");
-
+        Database db = new Database();
+        while (true) {
+            String menu = "What would you prefer to work with: \n 1 usual serialisation \n 2 Jackson serialisation \n \n Please input number: ";
+            System.out.println(menu);
+            switch ((int) FuncUtils.checkNum()) {
+                case 1:
+                    FuncUtils.menuS(db);
+                    db.serialize(db.nameFileS());
+                    return;
+                case 2:
+                    FuncUtils.menuJ(db);
+                    db.jacksonSerialize(db.nameFileJ());
+                    return;
+            }
+        }
     }
+
 }
 
 

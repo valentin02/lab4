@@ -1,24 +1,16 @@
 package ua.politeh;
-
-
-import ua.politeh.IFigure;
-
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.TreeMap;
 
-public class Triangle implements  Serializable {
+public class Triangle implements  Serializable, IFigure {
     /**
      * sides array
      */
     //@Getter
-    private final double[] sides;
+    private  double[] sides;
 
-    @Override
-    public String toString() {
-        return "Triangle{" +
-                "sides=" + Arrays.toString(sides) +
-                '}';
+    public Triangle() {
+
     }
 
     /**
@@ -32,7 +24,6 @@ public class Triangle implements  Serializable {
         this.sides[1] = setSide(side1);
         this.sides[2] = setSide(side2);
     }
-
 
     public double[] getSides() {
         return sides;
@@ -66,6 +57,13 @@ public class Triangle implements  Serializable {
         angles[2] = (Math.toDegrees(Math.acos((Math.pow(this.sides[0], 2) + Math.pow(this.sides[1], 2) - Math.pow(this.sides[2], 2)) / (2 * this.sides[0] * this.sides[1]))));
 
         return angles;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "sides=" + Arrays.toString(sides) +
+                '}';
     }
 
 
